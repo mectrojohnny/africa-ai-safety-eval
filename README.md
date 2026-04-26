@@ -30,18 +30,27 @@ Nigeria is the pilot testbed. All outputs, rubrics, and guidelines are designed 
 - Anthropic (Claude 3.x)
 - Google Gemini (1.5 Pro and variants)
 
+## Repository structure
+
+- `/src` - Evaluation scripts: prompt runners, response loggers, and rubric scorers
+- `/gemini_research` - Test prompt bank and annotated use case data
+- `evaluation-framework.md` - Full evaluation rubric, scoring dimensions, and mitigation strategies
+
 ## Current status
 
-> Pre-funding phase: This project has been in the pipeline since early 2026, awaiting funding to move from framework design into active data collection and evaluation.
-> Funding application: BlueDot Impact Rapid Grant (applied April 2026)
+> Pre-funding phase. This project has been in the pipeline since early 2026, awaiting funding to move from framework design into active data collection, model evaluation, and mitigation testing.
 
 ## About the researcher
 
-**John Akalagboro** - Founder, Kadosh Mechatronics and Kadosh Innovation Hub, Akure, Nigeria.
-Mechatronics engineer, AI/ML practitioner, TEDx speaker, and STEM educator with 7+ years training 100+ students per year in hands-on AI, robotics, and IoT.
+**John Akalagboro** is a Mechatronics Engineer, AI/ML practitioner, TEDx speaker, and founder of Kadosh Mechatronics and the Kadosh Innovation Hub based in Akure, Nigeria.
+
+With over 7 years of experience building at the intersection of hardware, software, and AI, John has trained 100+ students per year in hands-on robotics, IoT, and machine learning through the Kadosh Innovation Hub. His applied research spans CNN, LSTM, and computer vision systems deployed in resource-constrained African environments.
+
+John is also building a low-internet education platform for underserved learners in Nigeria, giving him direct access to the populations and use cases at the centre of this evaluation project. His work sits at the intersection of technical AI research and social impact, with a focus on making AI safer and more relevant for African users.
 
 - LinkedIn: [linkedin.com/in/akalagboro-john-5552aa105](https://www.linkedin.com/in/akalagboro-john-5552aa105)
-- Website: [kadoshmechatronics.com](https://www.kadoshmechatronics.com)
+- Organisation: [kadoshmechatronics.com](https://www.kadoshmechatronics.com)
+- Location: Akure, Ondo State, Nigeria
 
 ## License
 
