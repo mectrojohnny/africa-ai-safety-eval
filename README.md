@@ -1,215 +1,48 @@
-# Open Gemini Deep Research
+# African AI Safety Evaluation Pilot
 
-A powerful open-source research assistant powered by Google's Gemini AI that performs deep, multi-layered research on any topic.
+**A Nigerian-based pilot project to map, evaluate, and mitigate AI safety risks in real-world African use cases.**
 
-## Features
+## What this project is
 
-- Automated deep research with adjustable breadth and depth
-- Follow-up question generation for better context
-- Concurrent processing of multiple research queries
-- Comprehensive final report generation with citations
-- Three research modes: fast, balanced, and comprehensive
-- Progress tracking and detailed logging
-- Source tracking and citation management
+AI systems used across Africa are mostly built and trained outside African contexts. This means they can hallucinate facts about African realities, give biased or harmful advice to African users, exclude local languages, and be weaponised for fraud and disinformation with little oversight or accountability.
 
-## Prerequisites
+This project builds a focused evaluation and tracking initiative that:
+- Maps real AI use cases among students, youth, and SMEs in Nigeria
+- Measures safety failures: hallucinations, harmful advice, cultural bias, language exclusion, and misuse risk
+- Tests practical low-cost mitigations that local builders and deployers can adopt
+- Translates findings into governance-relevant tools and briefs for African AI policy stakeholders
 
-- Python 3.9+
-- Google Gemini API key
-- Docker (if using dev container)
-- VS Code with Dev Containers extension (if using dev container)
+Nigeria is the pilot testbed. All outputs, rubrics, and guidelines are designed to generalise across Africa.
 
-## Installation
+## Use cases under evaluation
 
-You can set up this project in one of two ways:
+| # | Use Case | Target Users | Primary Risk |
+|---|----------|-------------|-------------|
+| 1 | AI tutors and educational assistants | Students, learners | Hallucination, harmful academic advice |
+| 2 | AI writing and communication tools | SMEs, entrepreneurs | Bias, misuse for fraud/fake reviews |
+| 3 | AI chatbots for general youth advice | Young professionals | Harmful life/career/health-adjacent advice |
+| 4 | Image and video generation tools | General users | Deepfakes, impersonation, disinformation |
+| 5 | AI used informally for sensitive advice | Vulnerable users | Unsafe mental health, financial, legal guidance |
 
-### Option 1: Using Dev Container (Recommended)
+## Models being evaluated
 
-1. Open the project in VS Code
-2. When prompted, click "Reopen in Container" or run the "Dev Containers: Reopen in Container" command
-3. Create a `.env` file in the root directory and add your Gemini API key:
-   ```
-   GEMINI_KEY=your_api_key_here
-   ```
+- OpenAI (GPT-4o and variants)
+- Anthropic (Claude 3.x)
+- Google Gemini (1.5 Pro and variants)
 
-### Option 2: Local Installation
+## Current status
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd open-gemini-deep-research
-   ```
+> Pre-funding phase: This project has been in the pipeline since early 2026, awaiting funding to move from framework design into active data collection and evaluation.
+> Funding application: BlueDot Impact Rapid Grant (applied April 2026)
 
-2. Create and activate a virtual environment (recommended):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+## About the researcher
 
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+**John Akalagboro** - Founder, Kadosh Mechatronics and Kadosh Innovation Hub, Akure, Nigeria.
+Mechatronics engineer, AI/ML practitioner, TEDx speaker, and STEM educator with 7+ years training 100+ students per year in hands-on AI, robotics, and IoT.
 
-4. Create a `.env` file in the root directory and add your Gemini API key:
-   ```
-   GEMINI_KEY=your_api_key_here
-   ```
+- LinkedIn: [linkedin.com/in/akalagboro-john-5552aa105](https://www.linkedin.com/in/akalagboro-john-5552aa105)
+- Website: [kadoshmechatronics.com](https://www.kadoshmechatronics.com)
 
-## Usage
+## License
 
-Run the main script with your research query:
-```bash
-python main.py "your research query here"
-```
-
-### Optional Arguments
-
-- `--mode`: Research mode (choices: fast, balanced, comprehensive) [default: balanced]
-- `--num-queries`: Number of queries to generate [default: 3]
-- `--learnings`: List of previous learnings [optional]
-
-Example:
-```bash
-python main.py "Impact of artificial intelligence on healthcare" --mode comprehensive --num-queries 5
-```
-
-
-## Output
-
-The script will:
-1. Analyze your query for optimal research parameters
-2. Ask follow-up questions for clarification
-3. Conduct multi-layered research
-4. Generate a comprehensive report saved as `final_report.md`
-5. Show progress updates throughout the process
-
-## Project Structure
-
-```
-open-gemini-deep-research/
-├── .devcontainer/
-│   └── devcontainer.json
-├── src/
-│   ├── __init__.py
-│   └── deep_research.py
-├── .env
-├── .gitignore
-├── dockerfile
-├── main.py
-├── README.md
-└── requirements.txt
-```
-
-## How It Works
-
-### Research Modes
-
-The application offers three research modes that affect how deeply and broadly the research is conducted:
-
-1. **Fast Mode**
-   - Performs quick, surface-level research
-   - Maximum of 3 concurrent queries
-   - No recursive deep diving
-   - Typically generates 2-3 follow-up questions per query
-   - Best for time-sensitive queries or initial exploration
-   - Processing time: ~1-3 minutes
-
-2. **Balanced Mode** (Default)
-   - Provides moderate depth and breadth
-   - Maximum of 7 concurrent queries
-   - No recursive deep diving
-   - Generates 3-5 follow-up questions per query
-   - Explores main concepts and their immediate relationships
-   - Processing time: ~3-6 minutes
-   - Recommended for most research needs
-
-3. **Comprehensive Mode**
-   - Conducts exhaustive, in-depth research
-   - Maximum of 5 initial queries, but includes recursive deep diving
-   - Each query can spawn sub-queries that go deeper into the topic
-   - Generates 5-7 follow-up questions with recursive exploration
-   - Explores primary, secondary, and tertiary relationships
-   - Includes counter-arguments and alternative viewpoints
-   - Processing time: ~5-12 minutes
-   - Best for academic or detailed analysis
-
-### Research Process
-
-1. **Query Analysis**
-   - Analyzes initial query to determine optimal research parameters
-   - Assigns breadth (1-10 scale) and depth (1-5 scale) values
-   - Adjusts parameters based on query complexity and chosen mode
-
-2. **Query Generation**
-   - Creates unique, non-overlapping search queries
-   - Uses semantic similarity checking to avoid redundant queries
-   - Maintains query history to prevent duplicates
-   - Adapts number of queries based on mode settings
-
-3. **Research Tree Building**
-   - Implements a tree structure to track research progress
-   - Each query gets a unique UUID for tracking
-   - Maintains parent-child relationships between queries
-   - Tracks query order and completion status
-   - Provides detailed progress visualization through JSON tree structure
-
-4. **Deep Research** (Comprehensive Mode)
-   - Implements recursive research strategy
-   - Each query can generate one follow-up query
-   - Reduces breadth at deeper levels (breadth/2)
-   - Maintains visited URLs to avoid duplicates
-   - Combines learnings from all levels
-
-5. **Report Generation**
-   - Synthesizes findings into a coherent narrative
-   - Minimum 3000-word detailed report
-   - Includes inline citations and source tracking
-   - Organizes information by relevance and relationship
-   - Adds creative elements like scenarios and analogies
-   - Maintains factual accuracy while being engaging
-
-### Technical Implementation
-
-- Uses Google's Gemini AI for:
-  - Query analysis and generation
-  - Content processing and synthesis
-  - Semantic similarity checking
-  - Report generation
-- Implements concurrent processing for queries
-- Uses progress tracking system with tree visualization
-- Maintains research tree structure for relationship mapping
-
-#### Research Tree Implementation
-
-The research tree is implemented through the `ResearchProgress` class that tracks:
-- Query relationships (parent-child)
-- Query completion status
-- Learnings per query
-- Query order
-- Unique IDs for each query
-
-The complete research tree structure is automatically saved to `research_tree.json` when generating the final report, allowing for later analysis or visualization of the research process.
-
-Example tree structure:
-```json
-{
-  "query": "root query",
-  "id": "uuid-1",
-  "status": "completed",
-  "depth": 2,
-  "learnings": ["learning 1", "learning 2"],
-  "sub_queries": [
-    {
-      "query": "sub-query 1",
-      "id": "uuid-2",
-      "status": "completed",
-      "depth": 1,
-      "learnings": ["learning 3"],
-      "sub_queries": [],
-      "parent_query": "root query"
-    }
-  ],
-  "parent_query": null
-}
-```
+MIT License - open for reuse and adaptation by other African AI safety researchers.
